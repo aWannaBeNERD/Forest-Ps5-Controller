@@ -1,60 +1,96 @@
-/* Forest PS5 Controller — alignment correction
-   Append this file's contents to the VERY END of style.css.
-   Keeps Base Finished.png and all existing sprite images unchanged. */
+/* Forest PS5 Controller — complete stylesheet
+   Keeps Base Finished.png and all seven original PNG assets.
+   Position values have been adjusted to account for the transparent
+   top area in Base Finished.png. */
 
-/* L2 / R2: align with the trigger shapes on Base Finished.png */
-.custom .triggers {
-  left: 11.1vw;
-  top: 30.0vw;
-  width: 78.0vw;
+/* Controller shell */
+.custom.controller,
+.custom.controller::after {
+  background-image: url("Base%20Finished.png");
+  background-size: 100vw auto;
+  background-position: left top;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
 }
+
+.custom.controller.disconnected {
+  opacity: 0.75;
+}
+
+/* L2 & R2 triggers */
+.custom .triggers {
+  position: absolute;
+  width: 78vw;
+  height: 11.6896vw;
+  left: 11.1vw;
+  top: 30vw;
+}
+
+.custom .trigger,
 .custom .triggers::before,
-.custom .trigger.left {
-  transform: scale(1.10);
+.custom .triggers::after {
+  position: absolute;
+  background-image: url("Triggers.png");
+  background-repeat: no-repeat;
+  background-size: 27.923010vw 26.379214vw;
+  width: 12.4615vw;
+  height: 11.6896vw;
+  top: 0;
+}
+
+.custom .trigger {
+  background-position-y: -13.6896vw;
+  opacity: 0;
+}
+
+.custom .triggers::before,
+.custom .triggers::after {
+  content: '';
+  background-position-y: -1vw;
+  z-index: -1;
+}
+
+.custom .trigger.left,
+.custom .triggers::before {
+  left: 0;
+  background-position-x: -1vw;
+  transform: scale(1.1);
   transform-origin: top left;
 }
-.custom .triggers::after,
-.custom .trigger.right {
-  transform: scale(1.10);
+
+.custom .trigger.right,
+.custom .triggers::after {
+  right: 0;
+  background-position-x: -14.4615vw;
+  transform: scale(1.1);
   transform-origin: top right;
 }
 
-/* L1 / R1 bumpers */
+/* L1 & R1 bumpers */
 .custom .bumpers {
+  position: absolute;
+  width: 77.1vw;
+  height: 4.6244vw;
   left: 11.5vw;
   top: 43.4vw;
-  width: 77.1vw;
 }
 
-/* D-pad */
-.custom .dpad {
-  left: 7.8vw;
-  top: 53.0vw;
-  transform: scale(1.10);
-  transform-origin: top left;
+.custom .bumper {
+  position: absolute;
+  background-image: url("Bumpers.png");
+  background-repeat: no-repeat;
+  background-size: 29.608984vw 12.248846vw;
+  background-position-y: -1vw;
 }
 
-/* △ ○ × □ face buttons */
-.custom .abxy {
-  left: 70.3vw;
-  top: 51.0vw;
-  transform: scale(1.08);
-  transform-origin: top left;
+.custom .bumper.pressed {
+  background-position-y: -6.6244vw;
 }
 
-/* Share / Options */
-.custom .arrows {
-  left: 24.1vw;
-  top: 48.6vw;
-}
-
-/* Analog sticks */
-.custom .sticks {
-  left: 24.9vw;
-  top: 68.6vw;
-  width: 43.8vw;
-}
-.custom .stick {
-  transform: scale(1.25);
-  transform-origin: top left;
-}
+.custom .bumper.left {
+  background-position-x: -1vw;
+  width: 13.2734vw;
+  height: 4.4238vw;
+  left: 0;
+  top: 0.0476vw;
